@@ -4,25 +4,23 @@ require 'json'
 class PrintServlet < WEBrick::HTTPServlet::AbstractServlet
   def do_GET(req, res)
     return if req.body.nil?
-
-    result = JSON.parse(req.body)
-    puts "///////////// request.body ////////////////\n"
-    p req.body
-    puts "///////////// request.body(json) ////////////////\n"
-    p result
-    puts "///////////// response.body ////////////////\n"
-    p res.body
+    print_req_and_res(req, res)
   end
 
   def do_POST(req, res)
     return if req.body.nil?
+    print_req_and_res(req, res)
+  end
 
+  private
+  def print_req_and_res(req, res)
     result = JSON.parse(req.body)
-    puts "///////////// request.body ////////////////\n"
+
+    p "///////////// request.body ////////////////"
     p req.body
-    puts "///////////// request.body(json) ////////////////\n"
+    p "///////////// request.body(json) ////////////////"
     p result
-    puts "///////////// response.body ////////////////\n"
+    p "///////////// response.body ////////////////"
     p res.body
   end
 end
