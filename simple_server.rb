@@ -3,12 +3,10 @@ require 'json'
 
 class PrintServlet < WEBrick::HTTPServlet::AbstractServlet
   def do_GET(req, res)
-    return if req.body.nil?
     print_req_and_res(req, res)
   end
 
   def do_POST(req, res)
-    return if req.body.nil?
     print_req_and_res(req, res)
   end
 
